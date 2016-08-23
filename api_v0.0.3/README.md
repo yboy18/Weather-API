@@ -1,3 +1,2 @@
-1) Update api.js no parameter and search value handler.
-2) Update commit
-3) Update api.js Error handler jsonp - source - 'no data'.
+1) Clear did no using file.<br/><br/>
+2) Add Web service Error code 500 handler on app.js.
