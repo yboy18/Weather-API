@@ -2,11 +2,12 @@
 /*
  * API.
  */
+// defind library
 var dateFormat = require('dateformat');
 var sync = require('sync-request'); 
 var mongoose = require("mongoose");
 
-// mLab mongodb connection
+// define mongodb connection to mLab
 mongoose.connect('mongodb://Ak47api:Ak47api569@ds161295.mlab.com:61295/nodejs-api', function(err){
     if (err) {
         console.log('mongodb connection error', err);
@@ -21,13 +22,15 @@ var searchSchema = new mongoose.Schema({
     sdate: { type: Date, default: Date.now } //Search Date
 });
 
+//define mongo db collection
 var Todo = mongoose.model('apis', searchSchema);
 
 exports.search = function(req, res){
     
     var today = new Date();
     try {
-        if(req.query.v == null){
+        // no search value handler
+        if(req.query.v == null || req.query.v == ''){
             var data = { 'code':'400', 'message': 'Bad Request.'};
             res.header('Contect-type', 'application/json');
             res.header('Charset', 'utf8');
